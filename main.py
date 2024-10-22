@@ -17,19 +17,13 @@ def media_recognize(message):
     print(message)
     try:
         file_id = message.voice.file_id
-    except Exception as e:
-        print(e)
-
+    except AttributeError:
         try:
             file_id = message.video.file_id
-        except Exception as e:
-            print(e)
-
+        except AttributeError:
             try:
                 file_id = message.video_note.file_id
-            except Exception as e:
-                print(e)
-
+            except AttributeError:
                 try:
                     file_id = message.audio.file_id
                 except Exception as e:
